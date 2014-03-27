@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 17:35:37 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 19:55:11 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:37:44 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ static int	 	check_built(char *buff)
 		setenv_fct(buff + 6);
 	else if (!(ret = ft_strncmp(buff, "unsetenv", 8)))
 		unsetenv_fct(buff + 8);
-	else
-		printf("on rentre nul part\n");
-	printf("ret ->%d\n", ret);
 	return (ret);
 }
 
@@ -88,31 +85,24 @@ void		read_tree(t_node *tree, int fd_in, int fd_out)
 
 	i = 0;
 	proc_tab = init_proctab();
-	while (i < OPE_NUM)
+	if (tree)
 	{
-		if (!ft_strcmp(tree->type, proc_tab[i].operand))
+		while (i < OPE_NUM)
 		{
-			proc_tab[i].apply_proc(tree, fd_in, fd_out);
-			break ;
+			if (!ft_strcmp(tree->type, proc_tab[i].operand))
+			{
+				proc_tab[i].apply_proc(tree, fd_in, fd_out);
+				break ;
+			}
+			i++;
 		}
-		i++;
-	}
-	if (!ft_strcmp(tree->type, "com"))
-	{	
-		if (check_built(tree->word))
-		{
-			command_proc(tree->word, fd_in, fd_out);
-			printf("cmd banceeee\n");
+		if (!ft_strcmp(tree->type, "com"))
+		{	
+			if (check_built(tree->word))
+			{
+				command_proc(tree->word, fd_in, fd_out);
+				set_term(1);
+			}
 		}
-			
 	}
-	
-	/*
-	if (!ft_strcmp(tree->type, "com"))
-	{
-		if (ft_strequ(tree->word, "exit"))
-			exit_fct(NULL);
-		else
-			command_proc(tree->word, fd_in, fd_out);
-	}*/
 }

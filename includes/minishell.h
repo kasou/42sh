@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 18:20:04 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 21:51:00 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:48:39 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@
 */
 # define KEY_NUM	13
 # define OPE_NUM	7
-
-/*
-** global
-*/
-extern char				**environ;
 
 /*
 ** typedef
@@ -291,7 +286,7 @@ void		del_proctab(void);
 /*
 ** prompt_fct.c
 */
-int			display_prompt(void);
+int			display_prompt(char **environ);
 
 /*
 ** redil_fct.c

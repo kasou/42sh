@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 17:05:26 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 18:39:36 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:23:09 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	organize_com(t_node **tree, t_token **comlist, int pos, int priority)
 	operand.name = NULL;
 	operand.priority = -1;
 
-	while (tmp->next && tmp->next->type)
+	while (tmp && tmp->next && tmp->next->type)
 	{
 		operand = check_operands(tmp->type);
 		if (operand.name != NULL
@@ -72,7 +72,7 @@ void	organize_com(t_node **tree, t_token **comlist, int pos, int priority)
 			organize_com(tree, comlist, pos, priority + 1);
 		}
 	}
-	else if (!ft_strcmp(tmp->type, "com"))
+	else if (tmp && !ft_strcmp(tmp->type, "com"))
 	{
 		add_node(tree, new_node("com", tmp->word, pos));
 	}

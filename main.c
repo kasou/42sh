@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 20:48:25 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 18:54:21 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:48:25 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,28 +70,8 @@ t_env			*init_env(char **environ)
 	}
 	return (env);
 }
-/*
-void			set_term(int set)
-{
-	struct termios	term;
 
-	if (set == 1)
-	{
-		tcgetattr(0, &term);
-		term.c_lflag &= ~(ICANON | ECHO);
-		term.c_cc[VMIN] = 1;
-		term.c_cc[VTIME] = 0;
-		tcsetattr(0, 0, &term);
-	}
-	else if (set == -1)
-	{
-		tcgetattr(0, &term);
-		term.c_lflag |= (ICANON | ECHO);
-		tcsetattr(0, 0, &term);
-	}
-}*/
-
-int				main(void)
+int				main(int ac, char **ag, char **environ)
 {
 	int			prompt;
 	t_historic	*historic;
@@ -100,11 +80,13 @@ int				main(void)
 	g_pid.father = 0;
 	g_pid.child = 0;
 	g_pid.built = -1;
-
+	ac = ac;
+	ag = ag;
+	//printf("%s\n", environ[0]);
 	if (tgetent(NULL, getenv("TERM")) < 1)
 		ft_error("Improper environment.");
 	set_term(1);
-	prompt = display_prompt();
+	prompt = display_prompt(environ);
 	historic = init_historic(prompt);
 	minishell(&historic);
 	set_term(-1);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tab_fct.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midoubih <midoubih@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/26 17:24:46 by midoubih          #+#    #+#             */
-/*   Updated: 2014/03/26 17:24:56 by midoubih         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:14:21 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	del_tab(char **tab)
+void		del_tab(char **tab)
 {
 	int		i;
 
@@ -29,9 +29,9 @@ void	del_tab(char **tab)
 	}
 }
 
-int				ft_tablen(char **tab)
+int			ft_tablen(char **tab)
 {
-	int			res;
+	int		res;
 
 	res = 0;
 	while (tab[res])

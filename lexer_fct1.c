@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 18:16:51 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/26 20:58:20 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:36:08 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,16 @@ void			tokenize_comline(t_token **comlist, char *comline)
 	while (comline[i] && !(operand = check_operands(comline + i)).name)
 		i++;
 	word = ft_strndup(comline, i - 1);
-	add_token(comlist, "com", word, -1);
-	if (operand.name)
-		add_token(comlist, operand.name, NULL, operand.priority);
-	ft_strdel(&word);
-	if (comline[i])
+	if (word)
 	{
-		if ((comline + i + ft_strlen(operand.name)))
-			read_comline(comlist, comline + i + ft_strlen(operand.name));
+		add_token(comlist, "com", word, -1);
+		if (operand.name)
+			add_token(comlist, operand.name, NULL, operand.priority);
+		ft_strdel(&word);
+		if (comline[i])
+		{
+			if ((comline + i + ft_strlen(operand.name)))
+				read_comline(comlist, comline + i + ft_strlen(operand.name));
+		}
 	}
 }

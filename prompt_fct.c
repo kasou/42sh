@@ -6,13 +6,13 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 21:19:15 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 19:10:07 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:45:09 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char		*check_pwd(void)
+static char		*check_pwd(char **environ)
 {
 	t_env	*env;
 	int		i;
@@ -26,7 +26,7 @@ static char		*check_pwd(void)
 	return (env->environ[i] + 4);
 }
 
-static char		*check_user(void)
+static char		*check_user(char **environ)
 {
 	t_env	*env;
 	int		i;
@@ -40,13 +40,13 @@ static char		*check_user(void)
 	return (env->environ[i] + 5);
 }
 
-int				display_prompt(void)
+int				display_prompt(char **environ)
 {
 	char	*pwd;
 	char	*user;
 
-	pwd = check_pwd();
-	user = check_user();
+	pwd = check_pwd(environ);
+	user = check_user(environ);
 	ft_putstr("$ ");
 	ft_putstr(user);
 	ft_putstr(" ~");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_fct.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 20:26:38 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/12 21:20:17 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:59:18 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		check_path(char *path)
 void	improper_path(int ret, char *path)
 {
 	if (ret == -1)
-		ft_putjoin("42sh: path cannot be found ", path);
+		ft_putjoin("42sh: command not found ", path);
 	else if (ret == -2)
 		ft_putjoin("42sh: execute/search permission denied ", path);
 }

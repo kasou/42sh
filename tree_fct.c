@@ -6,16 +6,15 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 18:00:43 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 15:50:46 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:13:14 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
 static int		place_node(int pos, int prev_pos)
 {
-	if (pos == prev_pos *2 + 1)
+	if (pos == prev_pos * 2 + 1)
 		return (1);
 	else if (pos == prev_pos * 2)
 		return (0);
@@ -27,7 +26,7 @@ static int		place_node(int pos, int prev_pos)
 
 t_node			*new_node(char *type, char *word, int pos)
 {
-	t_node	*elem;
+	t_node		*elem;
 
 	elem = (t_node *)malloc(sizeof(t_node));
 	elem->type = ft_strdup(type);
@@ -40,8 +39,8 @@ t_node			*new_node(char *type, char *word, int pos)
 
 void			add_node(t_node **tree, t_node *elem)
 {
-	t_node	*tmp_tree;
-	t_node	*tmp_node;
+	t_node		*tmp_tree;
+	t_node		*tmp_node;
 
 	tmp_tree = *tree;
 	if (tmp_tree)
@@ -69,7 +68,7 @@ void			add_node(t_node **tree, t_node *elem)
 
 void			clear_tree(t_node **tree)
 {
-	t_node	*tmp_tree;
+	t_node		*tmp_tree;
 
 	tmp_tree = *tree;
 	if (tree)
@@ -85,14 +84,12 @@ void			clear_tree(t_node **tree)
 	}
 }
 
-void    ft_print_tree(t_node *tree)
+void			ft_print_tree(t_node *tree)
 {
 	if (!tree)
 		return ;
-
 	if (tree->left)
 		ft_print_tree(tree->left);
-	printf("type = %s, word = %s\n", tree->type, tree->word);
 	if (tree->right)
-		ft_print_tree(tree->right);	
+		ft_print_tree(tree->right);
 }
