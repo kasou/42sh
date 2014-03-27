@@ -6,7 +6,7 @@
 /*   By: midoubih <midoubih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 17:02:35 by midoubih          #+#    #+#             */
-/*   Updated: 2014/03/25 17:37:15 by midoubih         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:46:34 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void			env_fct(char *msg)
 	t_env		*env;
 	char		**ptr;
 
+	(void)msg;
 	env = init_env(NULL);
 	if (env && env->environ)
 	{
@@ -25,5 +26,4 @@ void			env_fct(char *msg)
 			ft_putendl(*ptr++);
 		ptr = NULL;
 	}
-	msg = msg;
 }

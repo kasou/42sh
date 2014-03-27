@@ -6,7 +6,7 @@
 /*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 17:50:07 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/11 18:05:01 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:52:11 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void			display_comline(t_historic **historic)
 {
 	t_comline		*tmp;
 
+	tmp = NULL;
 	if ((*historic)->copy->size)
 	{
 		while ((*historic)->copy->comline)
