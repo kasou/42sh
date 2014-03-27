@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 20:52:39 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 19:03:24 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:50:07 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void			minishell(t_historic **historic)
 	int			i;
 	t_key		*key_tab;
 
-	signal(SIGINT, handle_sig);
+	ft_signal();
+	//signal(SIGINT, handle_sig);
 	buf = ft_strnew(7);
 	i = 0;
 	key_tab = init_keytab();
