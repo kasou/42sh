@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 18:20:04 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 21:51:00 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:16:05 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include "../libft/includes/libft.h"
 # include <termcap.h>
 # include <termios.h>
-
-# include <stdio.h>
 
 /*
 ** define
@@ -93,24 +91,24 @@ typedef struct			s_historic
 	t_copy				*copy;
 }						t_historic;
 
-typedef void			(*keyptr)(t_historic **);
+typedef void			(*t_keyptr)(t_historic **);
 
 typedef struct			s_key
 {
 	char				*keyword;
-	keyptr				apply_key;
+	t_keyptr			apply_key;
 }						t_key;
 
-typedef void			(*procptr)(t_node *, int, int);
+typedef void			(*t_procptr)(t_node *, int, int);
 
 typedef struct			s_proc
 {
 	char				*operand;
-	procptr				apply_proc;
+	t_procptr			apply_proc;
 }						t_proc;
 
 typedef struct			s_id
-{	
+{
 	int					id;
 	pid_t				child;
 	pid_t				father;
@@ -120,237 +118,233 @@ typedef struct			s_id
 /*
 ** aff_c.c
 */
-int			aff_c(int c);
-int			aff_str(char *str);
+int						aff_c(int c);
+int						aff_str(char *str);
 
 /*
 ** and_fct.c
 */
-void		and_proc(t_node *tree, int fd_in, int fd_out);
+void					and_proc(t_node *tree, int fd_in, int fd_out);
 
 /*
 ** arrow_fct1.c
 */
-void		apply_arrowleft(t_historic **historic);
-void		apply_arrowright(t_historic **historic);
-int			check_beginning(t_comline *comline);
-int			check_ending(t_comline *comline);
+void					apply_arrowleft(t_historic **historic);
+void					apply_arrowright(t_historic **historic);
+int						check_beginning(t_comline *comline);
+int						check_ending(t_comline *comline);
 
 /*
 ** arrow_fct2.c
 */
-void		apply_arrowdown(t_historic **historic);
-void		apply_arrowup(t_historic **historic);
-void		clear_aff(t_historic **historic);
-void		display_comline(t_historic **historic);
+void					apply_arrowdown(t_historic **historic);
+void					apply_arrowup(t_historic **historic);
+void					clear_aff(t_historic **historic);
+void					display_comline(t_historic **historic);
 
 /*
 ** built_cd.c
 */
-int			cd_fct(char *msg);
+int						cd_fct(char *msg);
 
 /*
 ** built_echo.c
 */
-int			echo_fct(char *msg);
+int						echo_fct(char *msg);
 
 /*
 ** built_env.c
 */
-void		env_fct(char *msg);
+void					env_fct(char *msg);
 
 /*
 ** built_exit.c
 */
-void		exit_fct(char *msg);
+void					exit_fct(char *msg);
 
 /*
 ** built_set_unset.c
 */
-int			setenv_fct(char *var);
-int			unsetenv_fct(char *var);
+int						setenv_fct(char *var);
+int						unsetenv_fct(char *var);
 
 /*
 ** comline_fct.c
 */
-t_comline	*add_char_to_comline(char c);
-void		del_comline(t_comline *comline);
+t_comline				*add_char_to_comline(char c);
+void					del_comline(t_comline *comline);
 
 /*
 ** command_fct.c
 */
-char		*check_command(char *command);
-int			command_proc(char *command, int fd_in, int fd_out);
+char					*check_command(char *command);
+int						command_proc(char *command, int fd_in, int fd_out);
 
 /*
 ** copy_historic_fct.c
 */
-t_copy		*copy_historic(char **historic, int prompt);
-void		del_copy(t_copy *copy);
+t_copy					*copy_historic(char **historic, int prompt);
+void					del_copy(t_copy *copy);
 
 /*
 ** delete_fct.c
 */
-void		apply_delete(t_historic **historic);
-void		print_comline(t_historic **historic);
-void		update_linecol(t_historic **historic);
+void					apply_delete(t_historic **historic);
+void					print_comline(t_historic **historic);
+void					update_linecol(t_historic **historic);
 
 /*
 ** diverse_func.c
 */
-char		*seek_env(char *path);
-int			ft_strlen_to_char(char *str, char c);
-char		*ft_strdup_to_char(char *str, char c);
+char					*seek_env(char *path);
+int						ft_strlen_to_char(char *str, char c);
+char					*ft_strdup_to_char(char *str, char c);
 
 /*
 ** edit_fct.c
 */
-void		apply_edit(t_historic **historic, char c);
-void		edit_line(t_historic **historic);
+void					apply_edit(t_historic **historic, char c);
+void					edit_line(t_historic **historic);
 
 /*
 ** ft_strcpy_spec.c
 */
-char		*ft_strcpy_spec(char *s1, const char *s2);
-
+char					*ft_strcpy_spec(char *s1, const char *s2);
 
 /*
 ** historic_fct.c
 */
-char		**add_to_historic(char **historic, char *comline);
-t_historic	*init_historic(int prompt);
+char					**add_to_historic(char **historic, char *comline);
+t_historic				*init_historic(int prompt);
 
 /*
 ** lexer_fct1.c
 */
-void		tokenize_comline(t_token **comlist, char *comline);
-char		*tokenize_redi(t_token **comlist, char *comline);
+void					tokenize_comline(t_token **comlist, char *comline);
+char					*tokenize_redi(t_token **comlist, char *comline);
 
 /*
 ** lexer_fct2.c
 */
-void		del_comlist(t_token *comlist);
-void		organize_com(t_node **tree, t_token **comlist, int pos, int i);
-void		read_comline(t_token **comlist, char *comline);
+void					del_comlist(t_token *comlist);
+void					organize_com(t_node **tree, t_token **comlist, int pos,
+							int i);
+void					read_comline(t_token **comlist, char *comline);
 
 /*
 ** main.c
 */
-t_env		*init_env(char **environ);
+t_env					*init_env(char **environ);
 
 /*
 ** minishell.c
 */
-void		del_keytab(void);
-void		minishell(t_historic **historic);
+void					del_keytab(void);
+void					minishell(t_historic **historic);
 
 /*
 ** move_fct1.c
 */
-void		apply_movedown(t_historic **historic);
-void		apply_movenext(t_historic **historic);
-void		apply_moveprev(t_historic **historic);
-void		apply_moveup(t_historic **historic);
+void					apply_movedown(t_historic **historic);
+void					apply_movenext(t_historic **historic);
+void					apply_moveprev(t_historic **historic);
+void					apply_moveup(t_historic **historic);
 
 /*
 ** move_fct2.c
 */
-void		apply_movebegin(t_historic **historic);
-void		apply_moveend(t_historic **historic);
+void					apply_movebegin(t_historic **historic);
+void					apply_moveend(t_historic **historic);
 
 /*
 ** or_fct.c
 */
-void		or_proc(t_node *tree, int fd_in, int fd_out);
+void					or_proc(t_node *tree, int fd_in, int fd_out);
 
 /*
 ** operands_fct.c
 */
-t_ope		check_operands(char *comline);
-void		del_operands(t_ope *operands);
-t_ope		*init_operands(void);
+t_ope					check_operands(char *comline);
+void					del_operands(t_ope *operands);
+t_ope					*init_operands(void);
 
 /*
 ** path_fct.c
 */
-char		*build_path(char *path, char *command);
-int			check_path(char *path);
-void		improper_path(int ret, char *path);
+char					*build_path(char *path, char *command);
+int						check_path(char *path);
+void					improper_path(int ret, char *path);
 
 /*
 ** pipe_fct.c
 */
-void		pipe_proc(t_node *tree, int fd_in, int fd_out);
+void					pipe_proc(t_node *tree, int fd_in, int fd_out);
 
 /*
 ** process_fct.c
 */
-void		read_tree(t_node *tree, int fd_in, int fd_out);
-void		del_proctab(void);
+void					read_tree(t_node *tree, int fd_in, int fd_out);
+void					del_proctab(void);
 
 /*
 ** prompt_fct.c
 */
-int			display_prompt(void);
+int						display_prompt(void);
 
 /*
 ** redil_fct.c
 */
-int			remove_file_redil(void);
-int			get_fd_file_redil(int status);
-void		redil_proc(t_node *tree, int fd_in, int fd_out);
-
+int						remove_file_redil(void);
+int						get_fd_file_redil(int status);
+void					redil_proc(t_node *tree, int fd_in, int fd_out);
 
 /*
 ** redir_fct.c
 */
-void		redir_proc(t_node *tree, int fd_in, int fd_out);
+void					redir_proc(t_node *tree, int fd_in, int fd_out);
 
 /*
 ** redirr_fct.c
 */
-void		redirr_proc(t_node *tree, int fd_in, int fd_out);
+void					redirr_proc(t_node *tree, int fd_in, int fd_out);
 
 /*
 ** return_fct.c
 */
-void		apply_return(t_historic **historic);
+void					apply_return(t_historic **historic);
 
 /*
 ** seek_path_fct.c
 */
-char		*seek_true_path(char *actual_dir, char *path);
+char					*seek_true_path(char *actual_dir, char *path);
 
 /*
 ** scolon_fct.c
 */
-void		scolon_proc(t_node *tree, int fd_in, int fd_out);
+void					scolon_proc(t_node *tree, int fd_in, int fd_out);
 
 /*
 ** tab_fct.c
 */
-int			ft_tablen(char **tab);
-void		del_tab(char **tab);
+int						ft_tablen(char **tab);
+void					del_tab(char **tab);
 
 /*
 ** term_fct.c
 */
-void		set_term(int set);
+void					set_term(int set);
 
 /*
 ** tree_fct.c
 */
-void		add_node(t_node **tree, t_node *elem);
-void		clear_tree(t_node **tree);
-t_node		*new_node(char *type, char *word, int pos);
-void		ft_print_tree(t_node *tree);
+void					add_node(t_node **tree, t_node *elem);
+void					clear_tree(t_node **tree);
+t_node					*new_node(char *type, char *word, int pos);
+void					ft_print_tree(t_node *tree);
 
 /*
- ** seek_env_fct.c
- */
-void			ft_signal(void);
-
-
-
+** seek_env_fct.c
+*/
+void					ft_signal(void);
 
 #endif

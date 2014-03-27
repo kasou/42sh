@@ -6,7 +6,7 @@
 /*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 16:23:53 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/11 23:16:59 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:33:53 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	edit_line(t_historic **historic)
 {
-    char		*line;
-    int			i;
+	char		*line;
+	int			i;
 	int			size;
 	t_comline	*tmp;
 
@@ -36,8 +36,6 @@ void	edit_line(t_historic **historic)
 	line[i] = '\0';
 	ft_strdel(&(*historic)->copy->line);
 	(*historic)->copy->line = line;
-//	update_linecol(historic);
-//	print_comline(historic);
 }
 
 void	apply_edit(t_historic **historic, char c)
@@ -46,9 +44,8 @@ void	apply_edit(t_historic **historic, char c)
 	t_comline	*tmp;
 
 	ptmp = NULL;
-	tmp = NULL;
-	if ((*historic)->copy->comline->right)
-		tmp = (*historic)->copy->comline->right;
+	tmp = (*historic)->copy->comline->right ?
+		(*historic)->copy->comline->right : NULL;
 	(*historic)->copy->comline->right = add_char_to_comline(c);
 	ptmp = (*historic)->copy->comline;
 	(*historic)->copy->comline = (*historic)->copy->comline->right;

@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 18:00:43 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 15:50:46 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:19:06 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void    ft_print_tree(t_node *tree)
 
 	if (tree->left)
 		ft_print_tree(tree->left);
-	printf("type = %s, word = %s\n", tree->type, tree->word);
 	if (tree->right)
 		ft_print_tree(tree->right);	
 }

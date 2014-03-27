@@ -6,7 +6,7 @@
 /*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:44:45 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/22 20:10:28 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:35:08 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			**add_to_historic(char **historic, char *comline)
 	i = 0;
 	j = 0;
 	while (historic && historic[i])
-			i++;
+		i++;
 	if (!(update = (char **)malloc(sizeof(char *) * (i + 2))))
 		ft_error("add_to_historic: memory allocation failed");
 	while (historic && historic[j])
@@ -70,7 +70,7 @@ t_historic		*init_historic(int prompt)
 	}
 	historic->prompt = prompt;
 	historic->copy = copy_historic(historic->historic, prompt);
-	if (close(fd) ==  -1)
+	if (close(fd) == -1)
 		ft_error("init_historic: close failed on file .42sh_historic");
 	return (historic);
 }

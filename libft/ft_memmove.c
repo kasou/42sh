@@ -6,7 +6,7 @@
 /*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 12:14:20 by wtrembla          #+#    #+#             */
-/*   Updated: 2013/12/13 18:31:14 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:02:30 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	*ft_memmove(void *s1, const void *s2, size_t n)
 
 	tmp1 = (char *)s1;
 	tmp2 = (char *)s2;
-
 	if (tmp1 <= tmp2 || tmp2 >= tmp1 + n)
 	{
 		while (n--)

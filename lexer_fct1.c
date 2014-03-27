@@ -6,17 +6,15 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 18:16:51 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/26 20:58:20 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:43:58 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
 static t_token	*new_word(char *type, char *word, int priority)
 {
 	t_token		*elem;
-
 
 	elem = (t_token *)malloc(sizeof(t_token));
 	elem->type = ft_strdup(type);
@@ -80,7 +78,8 @@ char			*tokenize_redi(t_token **comlist, char *comline)
 		j++;
 	while (comline[j] != ' ' && comline[j])
 		j++;
-	word = ft_strsub(comline, i + ft_strlen(operand.name), j - (i + ft_strlen(operand.name) - 1));
+	word = ft_strsub(comline, i + ft_strlen(operand.name),
+			j - (i + ft_strlen(operand.name) - 1));
 	add_token(comlist, "com", word, -1);
 	ft_strdel(&word);
 	add_token(comlist, operand.name, NULL, operand.priority);

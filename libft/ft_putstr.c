@@ -6,7 +6,7 @@
 /*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/25 17:46:48 by wtrembla          #+#    #+#             */
-/*   Updated: 2013/12/13 18:33:24 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:02:43 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,3 @@ void	ft_putstr(char const *s)
 {
 	write(1, s, ft_strlen(s));
 }
-

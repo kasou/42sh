@@ -6,13 +6,13 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 17:35:37 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 19:55:11 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:18:53 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_proc	init_process(char *operand, procptr apply_proc)
+static t_proc	init_process(char *operand, t_procptr apply_proc)
 {
 	t_proc		process;
 
@@ -40,7 +40,7 @@ static t_proc	*init_proctab(void)
 	return (proc_tab);
 }
 
-static int	 	check_built(char *buff)
+static int		check_built(char *buff)
 {
 	int		ret;
 
@@ -57,9 +57,6 @@ static int	 	check_built(char *buff)
 		setenv_fct(buff + 6);
 	else if (!(ret = ft_strncmp(buff, "unsetenv", 8)))
 		unsetenv_fct(buff + 8);
-	else
-		printf("on rentre nul part\n");
-	printf("ret ->%d\n", ret);
 	return (ret);
 }
 
@@ -81,7 +78,7 @@ void			del_proctab(void)
 	}
 }
 
-void		read_tree(t_node *tree, int fd_in, int fd_out)
+void			read_tree(t_node *tree, int fd_in, int fd_out)
 {
 	int			i;
 	t_proc		*proc_tab;
@@ -98,21 +95,8 @@ void		read_tree(t_node *tree, int fd_in, int fd_out)
 		i++;
 	}
 	if (!ft_strcmp(tree->type, "com"))
-	{	
-		if (check_built(tree->word))
-		{
-			command_proc(tree->word, fd_in, fd_out);
-			printf("cmd banceeee\n");
-		}
-			
-	}
-	
-	/*
-	if (!ft_strcmp(tree->type, "com"))
 	{
-		if (ft_strequ(tree->word, "exit"))
-			exit_fct(NULL);
-		else
+		if (check_built(tree->word))
 			command_proc(tree->word, fd_in, fd_out);
-	}*/
+	}
 }
