@@ -50,6 +50,7 @@ SRCS		=	aff_c.c					\
 				return_fct.c			\
 				seek_path_fct.c			\
 				scolon_fct.c			\
+				signal_fct.c			\
 				tab_fct.c				\
 				term_fct.c				\
 				tree_fct.c				\

@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 18:20:04 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 19:21:35 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:51:00 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -347,9 +347,8 @@ void		ft_print_tree(t_node *tree);
 
 /*
  ** seek_env_fct.c
- *//*
- char		*seek_env(char *path);
- char		*seek_true_path(char *actual_dir, char *path);*/
+ */
+void			ft_signal(void);
 
 
 
