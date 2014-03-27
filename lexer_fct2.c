@@ -6,14 +6,13 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 17:05:26 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 22:23:09 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:26:02 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-void	read_comline(t_token **comlist, char *comline)
+void			read_comline(t_token **comlist, char *comline)
 {
 	t_ope	operand;
 	char	*tmp1;
@@ -37,48 +36,44 @@ void	read_comline(t_token **comlist, char *comline)
 		tokenize_comline(comlist, comline);
 }
 
-void	organize_com(t_node **tree, t_token **comlist, int pos, int priority)
+static t_ope	new_ope(void)
 {
-	t_ope		operand;
+	t_ope	op;
+
+	op.name = NULL;
+	op.priority = -1;
+	return (op);
+}
+
+void			organize_com(t_node **tree, t_token **comlist, int pos, int p)
+{
+	t_ope		op;
 	t_token		*tmp;
 
 	tmp = *comlist;
-	operand.name = NULL;
-	operand.priority = -1;
-
+	op = new_ope();
 	while (tmp && tmp->next && tmp->next->type)
 	{
-		operand = check_operands(tmp->type);
-		if (operand.name != NULL
-			&& operand.priority == priority)
+		op = check_operands(tmp->type);
+		if (op.name != NULL && op.priority == p)
 			break ;
 		else
 			tmp = tmp->next;
 	}
-
-	if (operand.name)
+	if (op.name && !ft_strcmp(op.name, tmp->type) && (op.priority == p))
 	{
-		if (!ft_strcmp(operand.name, tmp->type)
-			&& (operand.priority == priority))
-		{
-			add_node(tree, new_node(tmp->type, tmp->word, pos));
-			ft_strdel(&tmp->type);
-			tmp->type = NULL;
-			organize_com(tree, comlist, pos * 2, operand.priority);
-			organize_com(tree, &tmp->next, pos * 2 + 1, operand.priority);
-		}
-		else if (priority < 4)
-		{
-			organize_com(tree, comlist, pos, priority + 1);
-		}
+		add_node(tree, new_node(tmp->type, tmp->word, pos));
+		ft_strdel(&tmp->type);
+		organize_com(tree, comlist, pos * 2, op.priority);
+		organize_com(tree, &tmp->next, pos * 2 + 1, op.priority);
 	}
+	else if (p < 4)
+			organize_com(tree, comlist, pos, p + 1);
 	else if (tmp && !ft_strcmp(tmp->type, "com"))
-	{
 		add_node(tree, new_node("com", tmp->word, pos));
-	}
 }
 
-void	del_comlist(t_token *comlist)
+void			del_comlist(t_token *comlist)
 {
 	t_token		*ptmp;
 

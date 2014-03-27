@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 19:45:55 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 22:33:47 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:24:20 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		del_argv(char **argv)
 	argv = NULL;
 }
 
-char		*check_command(char *command)
+char			*check_command(char *command)
 {
 	char	*tmp;
 	int		i;
@@ -34,13 +34,9 @@ char		*check_command(char *command)
 	t_env	*env;
 
 	env = init_env(NULL);
-	tmp = NULL;
-	if (command[0] == '/')
-	{
-		tmp = ft_strdup(command);
-		if (!(ret = check_path(command)))
-			return (tmp);
-	}
+	tmp = ft_strdup(command);
+	if (command[0] == '/' && !(ret = check_path(command)))
+		return (tmp);
 	else
 	{
 		i = -1;
@@ -57,35 +53,35 @@ char		*check_command(char *command)
 	return (NULL);
 }
 
-int	command_proc(char *command, int fd_in, int fd_out)
+static void		str_clean_replace(char **s1, char *s2)
 {
-	char	**argv;
-	char	*tmp;
-	t_env	*env;
+	ft_strdel(s1);
+	*s1 = s2;
+}
+
+int				command_proc(char *command, int fd_in, int fd_out)
+{
+	char			**argv;
+	char			*tmp;
 	extern t_id		g_pid;
 
 	g_pid.id = 0;
 	g_pid.father = 0;
 	argv = ft_strsplit(command, ' ');
-	env = init_env(NULL);
 	if ((tmp = check_command(argv[0])))
 	{
-		ft_strdel(&argv[0]);
-		argv[0] = tmp;
+		str_clean_replace(&argv[0], tmp);
 		if ((g_pid.father = fork()) == -1)
 			ft_error("command_proc: no child process created");
-		else
+		if (g_pid.father > 0)
+			wait(&g_pid.id);
+		if (!g_pid.father)
 		{
-			if (g_pid.father > 0)
-				wait(&g_pid.id);
-			if (g_pid.father == 0)
-			{
-				fd_in = (fd_in == -3) ? get_fd_file_redil(0) : fd_in;
-				dup2(fd_in, 0);
-				dup2(fd_out, 1);
-				if (execve(argv[0], argv, env->environ) == -1)
-					ft_putjoin("42sh: command not found: ", argv[0]);
-			}
+			fd_in = (fd_in == -3) ? get_fd_file_redil(0) : fd_in;
+			dup2(fd_in, 0);
+			dup2(fd_out, 1);
+			if (execve(argv[0], argv, init_env(NULL)->environ) == -1)
+				ft_putjoin("42sh: command not found: ", argv[0]);
 		}
 	}
 	del_argv(argv);

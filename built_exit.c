@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 15:56:55 by midoubih          #+#    #+#             */
-/*   Updated: 2014/03/27 22:40:28 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:22:17 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void		exit_fct(char *msg)
 {
 	t_env		*env;
 
+	(void)msg;
 	env = init_env(NULL);
 	if (env)
 	{
@@ -30,6 +31,5 @@ void		exit_fct(char *msg)
 		del_proctab();
 		set_term(-1);
 	}
-	msg = msg;
 	exit(0);
 }

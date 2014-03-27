@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 21:27:26 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 21:33:12 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:20:14 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,10 @@ static int		ft_write_redil_file(char *name, int fd_out)
 
 void			redil_proc(t_node *tree, int fd_in, int fd_out)
 {
-
 	fd_in = get_fd_file_redil(1);
 	if (!ft_write_redil_file(ft_strtrim(tree->left->word), fd_in))
 		return ;
-		//ft_error("redil_fct: cannt open stdin file");
 	close(fd_in);
 	read_tree(tree->right, -3, fd_out);
 	remove_file_redil();
 }
-
-
-
-
-

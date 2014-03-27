@@ -6,7 +6,7 @@
 /*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/05 16:56:29 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/12 16:32:01 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:11:32 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int		check_pos(t_historic **historic, int win_size, int test)
 {
 	if (test == 1 && (((*historic)->copy->comline->col + 1)
-						  >= (win_size + (*historic)->prompt)))
+						>= (win_size + (*historic)->prompt)))
 		return (1);
 	else if (test == 2 && (((*historic)->copy->comline->col + 1) >= win_size))
 		return (1);
@@ -48,7 +48,7 @@ void			apply_moveup(t_historic **historic)
 			(*historic)->copy->comline = (*historic)->copy->comline->left;
 	}
 	else if (check_pos(historic, size.ws_col, 2)
-			 && (*historic)->copy->comline->left)
+			&& (*historic)->copy->comline->left)
 	{
 		tputs(tgetstr("up", NULL), 1, aff_c);
 		tputs(tgoto(tgetstr("ch", NULL), 0, (*historic)->prompt), 1, aff_c);
@@ -73,7 +73,7 @@ void			apply_movedown(t_historic **historic)
 			(*historic)->copy->comline = (*historic)->copy->comline->right;
 	}
 	else if (check_pos(historic, size.ws_col, -2)
-			 && (*historic)->copy->comline->right->right)
+			&& (*historic)->copy->comline->right->right)
 	{
 		tputs(tgetstr("do", NULL), 1, aff_c);
 		while ((*historic)->copy->comline->right)

@@ -6,13 +6,13 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 17:35:37 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 22:37:44 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:28:21 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_proc	init_process(char *operand, procptr apply_proc)
+static t_proc	init_process(char *operand, t_procptr apply_proc)
 {
 	t_proc		process;
 
@@ -40,7 +40,7 @@ static t_proc	*init_proctab(void)
 	return (proc_tab);
 }
 
-static int	 	check_built(char *buff)
+static int		check_built(char *buff)
 {
 	int		ret;
 
@@ -78,7 +78,7 @@ void			del_proctab(void)
 	}
 }
 
-void		read_tree(t_node *tree, int fd_in, int fd_out)
+void			read_tree(t_node *tree, int fd_in, int fd_out)
 {
 	int			i;
 	t_proc		*proc_tab;

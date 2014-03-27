@@ -6,12 +6,11 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 20:52:39 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 21:50:07 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:11:07 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 void			handle_sig(int s)
 {
@@ -22,7 +21,7 @@ void			handle_sig(int s)
 	}
 }
 
-static t_key	init_key(char *keyword, keyptr apply_key)
+static t_key	init_key(char *keyword, t_keyptr apply_key)
 {
 	t_key		key;
 
@@ -82,7 +81,6 @@ void			minishell(t_historic **historic)
 	t_key		*key_tab;
 
 	ft_signal();
-	//signal(SIGINT, handle_sig);
 	buf = ft_strnew(7);
 	i = 0;
 	key_tab = init_keytab();

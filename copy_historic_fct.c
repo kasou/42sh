@@ -6,7 +6,7 @@
 /*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 21:07:56 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/22 17:54:10 by wtrembla         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:28:25 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static t_copy		*add_to_copy(t_copy *copy, char *comline, int prompt)
 	return (copy);
 }
 
-t_copy			*copy_historic(char **historic, int prompt)
+t_copy				*copy_historic(char **historic, int prompt)
 {
 	int			i;
 	t_copy		*copy;

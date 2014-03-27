@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 21:23:34 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 17:08:20 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:51:30 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	and_proc(t_node *tree, int fd_in, int fd_out)
 {
-
 	extern t_id		g_pid;
 
 	read_tree(tree->left, fd_in, fd_out);

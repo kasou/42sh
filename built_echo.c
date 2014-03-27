@@ -6,7 +6,7 @@
 /*   By: midoubih <midoubih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 09:40:57 by midoubih          #+#    #+#             */
-/*   Updated: 2014/03/27 10:20:46 by midoubih         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:46:08 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int			echo_fct(char *msg)
 	char	**ptr;
 	int		opt_n;
 
+	opt_n = 0;
 	if (*msg)
 	{
 		ptr = ft_strsplit(msg, ' ');
-		opt_n = 0;
 		if (*ptr && !ft_strcmp(ptr[0], "-n"))
 		{
 			++opt_n;

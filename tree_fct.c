@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 18:00:43 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 23:13:14 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:28:39 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,4 @@ void			clear_tree(t_node **tree)
 			clear_tree(&tmp_tree->right);
 		*tree = NULL;
 	}
-}
-
-void			ft_print_tree(t_node *tree)
-{
-	if (!tree)
-		return ;
-	if (tree->left)
-		ft_print_tree(tree->left);
-	if (tree->right)
-		ft_print_tree(tree->right);
 }

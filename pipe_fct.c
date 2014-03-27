@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 18:16:23 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 18:29:32 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:13:42 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,11 @@ static void		ft_right(t_node *tree, int fd_in, int fd_out, int *fd)
 {
 	close(fd[1]);
 	dup2(fd[0], fd_in);
-	//dup2(d->save_fd[1], 1);
 	read_tree(tree->right, fd[0], fd_out);
-	//ft_process_tree(parser->right, d);
-	//if (i % 2 == 0)
 	exit(EXIT_SUCCESS);
-	//else
-		exit(0);
 }
 
-void	pipe_proc(t_node *tree, int fd_in, int fd_out)
+void			pipe_proc(t_node *tree, int fd_in, int fd_out)
 {
 	extern t_id		g_pid;
 	int				fd_pipe[2];

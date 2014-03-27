@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 20:48:25 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 22:48:25 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:26:34 by lfouquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int				main(int ac, char **ag, char **environ)
 	g_pid.built = -1;
 	ac = ac;
 	ag = ag;
-	//printf("%s\n", environ[0]);
 	if (tgetent(NULL, getenv("TERM")) < 1)
 		ft_error("Improper environment.");
 	set_term(1);
