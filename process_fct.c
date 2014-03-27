@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 17:35:37 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 23:28:21 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:31:52 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void			read_tree(t_node *tree, int fd_in, int fd_out)
 			i++;
 		}
 		if (!ft_strcmp(tree->type, "com"))
-		{	
+		{
 			if (check_built(tree->word))
 			{
 				command_proc(tree->word, fd_in, fd_out);

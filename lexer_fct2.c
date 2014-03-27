@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 17:05:26 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 23:26:02 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:31:34 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void			organize_com(t_node **tree, t_token **comlist, int pos, int p)
 		organize_com(tree, &tmp->next, pos * 2 + 1, op.priority);
 	}
 	else if (p < 4)
-			organize_com(tree, comlist, pos, p + 1);
+		organize_com(tree, comlist, pos, p + 1);
 	else if (tmp && !ft_strcmp(tmp->type, "com"))
 		add_node(tree, new_node("com", tmp->word, pos));
 }
