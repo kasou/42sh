@@ -6,7 +6,7 @@
 /*   By: lfouquet <lfouquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 21:31:07 by wtrembla          #+#    #+#             */
-/*   Updated: 2014/03/27 15:53:10 by lfouquet         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:20:26 by sboeuf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_fd_file_redir(char *name)
 	return (fd);
 }
 
-void	redir_proc(t_node *tree, int fd_in, int fd_out)
+void		redir_proc(t_node *tree, int fd_in, int fd_out)
 {
 	fd_out = get_fd_file_redir(ft_strtrim(tree->left->word));
 	read_tree(tree->right, fd_in, fd_out);
